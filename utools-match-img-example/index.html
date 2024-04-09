@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+      gap: 10px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 80vh;
+    }
+
+    span {
+      font-size: large;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span id="status"></span>
+    <img id="preview" style="display: none;" />
+  </div>
+
+  <script>
+    // uTools API onPluginEnter(callback)
+    // type 为 "img" 时， payload 值示例 data:image/png;base64,...
+    utools.onPluginEnter(({ code, type, payload, option }) => {
+      var statusElement = document.getElementById('status');
+      var imgElement = document.getElementById('preview');
+      if (statusElement && imgElement) {
+        if (type === 'img' && payload) {
+          statusElement.innerText = '匹配到图片';
+          imgElement.src = payload;
+          imgElement.style.display = 'block';
+        } else {
+          statusElement.innerText = '未匹配到图片';
+          imgElement.style.display = 'none';
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

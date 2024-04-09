@@ -1,0 +1,17 @@
+{
+  "name": "demo-list",
+  "version": "1.0.0",
+  "pluginName": "demo-list",
+  "description": "列表模式示例插件",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "demo-list",
+      "explain": "列表模式示例插件",
+      "cmds": [
+        "list"
+      ]
+    }
+  ]
+}

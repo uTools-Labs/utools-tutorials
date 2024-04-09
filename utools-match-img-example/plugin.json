@@ -1,0 +1,22 @@
+{
+  "name": "demo_match_img",
+  "version": "1.0.0",
+  "pluginName": "智能匹配图片示例",
+  "description": "智能匹配图片示例插件",
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "demo_match_img",
+      "explain": "智能匹配图片示例",
+      "cmds": [
+        "match_img",
+        {
+          "type": "img",
+          "label": "智能匹配图片"
+        }
+      ]
+    }
+  ]
+}

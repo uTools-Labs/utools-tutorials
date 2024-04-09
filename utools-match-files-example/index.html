@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+      gap: 10px;
+    }
+
+    span {
+      font-size: large;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .file-info-value {
+      color: blue;
+    }
+
+    .file-info-key {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span id="status"></span>
+    <ul id="fileList"></ul>
+  </div>
+
+  <script>
+
+    // uTools API onPluginEnter(callback)
+    // type 为 "files" 时， payload 值示例
+    // [
+    //   {
+    //     "isFile": true,
+    //     "isDirectory": false,
+    //     "name": "demo.js",
+    //     "path": "C:\\demo.js"
+    //   }
+    // ]
+    utools.onPluginEnter(({ code, type, payload, option }) => {
+      var statusElement = document.getElementById('status');
+      var fileListElement = document.getElementById('fileList');
+
+      if (statusElement && fileListElement && type === 'files' && payload) {
+        statusElement.innerText = '匹配到文件';
+
+        fileListElement.innerHTML = '';
+
+        payload.forEach(file => {
+          var listItem = document.createElement('li');
+          listItem.classList.add('file-info');
+
+          var keyElement = document.createElement('span');
+          keyElement.classList.add('file-info-key');
+          keyElement.textContent = 'Name: ';
+          listItem.appendChild(keyElement);
+
+          var valueElement = document.createElement('span');
+          valueElement.classList.add('file-info-value');
+          valueElement.textContent = `${file.name} `;
+          listItem.appendChild(valueElement);
+
+          var pathKeyElement = document.createElement('span');
+          pathKeyElement.classList.add('file-info-key');
+          pathKeyElement.textContent = 'Path: ';
+          listItem.appendChild(pathKeyElement);
+
+          var pathValueElement = document.createElement('span');
+          pathValueElement.classList.add('file-info-value');
+          pathValueElement.textContent = `${file.path}`;
+          listItem.appendChild(pathValueElement);
+
+          fileListElement.appendChild(listItem);
+        });
+      } else {
+        statusElement.innerText = '未匹配到文件';
+        fileListElement.innerHTML = '';
+      }
+    });
+  </script>
+</body>
+
+</html>

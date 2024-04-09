@@ -1,0 +1,22 @@
+{
+  "name": "demo-none-ui",
+  "version": "1.0.0",
+  "pluginName": "demo-none-ui",
+  "description": "无UI模式示例插件",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "demo-none-ui",
+      "explain": "无UI模式示例插件",
+      "cmds": [
+        "noneui",
+        {
+          "type": "regex",
+          "label": "打开网址",
+          "match": "/^(?:(http|https|ftp):\/\/)?((?:[\\w-]+\\.)+[a-z0-9]+)((?:\/[^\/?#]*)+)?(\\?[^#]+)?(#.+)?$/i"
+        }
+      ]
+    }
+  ]
+}

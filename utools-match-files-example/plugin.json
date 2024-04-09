@@ -1,0 +1,24 @@
+{
+  "name": "demo_match_files",
+  "version": "1.0.0",
+  "pluginName": "智能匹配文件示例",
+  "description": "智能匹配文件示例插件",
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "demo_match_files",
+      "explain": "智能匹配文件示例",
+      "cmds": [
+        "match_files",
+        {
+          "type": "files",
+          "label": "智能匹配文件",
+          "minLength": 1,
+          "maxLength": 10
+        }
+      ]
+    }
+  ]
+}

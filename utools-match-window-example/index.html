@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    div {
+      width: 100%;
+      gap: 10px;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      font-size: large;
+    }
+
+    pre {
+      padding-left: 10vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span id="status"></span>
+    <pre id="code"></pre>
+  </div>
+
+  <script>
+    // uTools API onPluginEnter(callback)
+    // type 为 "window" 时， payload 值示例
+    // {
+    //   "id": 264584,
+    //   "class": "Chrome_WidgetWin_1",
+    //   "title": "demo",
+    //   "x": -8,
+    //   "y": -8,
+    //   "width": 1936,
+    //   "height": 1056,
+    //   "appPath": "C:\\demo.exe",
+    //   "pid": 232,
+    //   "app": "demo.exe"
+    // }
+    utools.onPluginEnter(({ code, type, payload, option }) => {
+      console.log('用户进入插件应用', code, type, payload)
+      var statusElement = document.getElementById('status');
+      var codeElement = document.getElementById('code');
+      if (statusElement && codeElement) {
+        if (type === 'window' && payload) {
+          statusElement.innerText = '匹配到Windows';
+          codeElement.innerText = JSON.stringify(payload, null, '  ');
+        } else {
+          statusElement.innerText = '未匹配到Windows';
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

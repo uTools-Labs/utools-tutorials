@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+      gap: 10px;
+    }
+
+    span {
+      font-size: large;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span id="status"></span>
+    <p id="text"></p>
+  </div>
+
+  <script>
+    // uTools API onPluginEnter(callback)
+    // type 为 "text"、"regex"、 "over" 时， payload 值为进入插件应用时的主输入框文本
+    utools.onPluginEnter(({ code, type, payload, option }) => {
+      console.log('用户进入插件应用', code, type, payload)
+      var statusElement = document.getElementById('status');
+      var textElement = document.getElementById('text');
+      if (statusElement && textElement && type === 'regex' && payload) {
+        statusElement.innerText = '匹配到正则文本';
+        textElement.textContent = payload;
+      } else {
+        statusElement.innerText = '未匹配到正则文本';
+        textElement.textContent = '';
+      }
+    });
+  </script>
+</body>
+
+</html>

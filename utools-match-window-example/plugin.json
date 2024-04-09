@@ -1,0 +1,32 @@
+{
+  "name": "demo_match_windows",
+  "version": "1.0.0",
+  "pluginName": "智能匹配活动窗口示例",
+  "description": "智能匹配活动窗口示例插件",
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "demo_match_windows",
+      "explain": "智能匹配活动窗口示例",
+      "cmds": [
+        "match_windows",
+        {
+          "type": "window",
+          "label": "置顶窗口",
+          "match": {
+            "app": [
+              "explorer.exe",
+              "Feishu.exe",
+              "WeChat.exe",
+              "cloudmusic.exe",
+              "msedge.exe",
+              "Code.exe"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

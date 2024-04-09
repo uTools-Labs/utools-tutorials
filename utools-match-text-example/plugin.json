@@ -1,0 +1,33 @@
+{
+  "name": "demo_match_text",
+  "version": "1.0.0",
+  "pluginName": "智能匹配文本示例",
+  "description": "智能匹配文本示例插件",
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "demo_match_text",
+      "explain": "智能匹配文本示例",
+      "cmds": [
+        "match_text",
+        {
+          "type": "regex",
+          "label": "网址匹配",
+          "match": "/^(?:(http|https|ftp):\/\/)?((?:[\\w-]+\\.)+[a-z0-9]+)((?:\/[^\/?#]*)+)?(\\?[^#]+)?(#.+)?$/i"
+        },
+        {
+          "type": "regex",
+          "label": "身份证号匹配",
+          "match": "/^[1-9]\\d{5}(19|20)\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])\\d{3}(\\d|X)$/"
+        },
+        {
+          "type": "regex",
+          "label": "手机号正则匹配",
+          "match": "/^1[3456789]\\d{9}$/"
+        }
+      ]
+    }
+  ]
+}
